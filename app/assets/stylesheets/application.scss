@@ -1,2 +1,16 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+hr {
+  margin-bottom: 0;
+  width: 75%;
+}
+.page-footer {
+  font-size: 14px;
+}
+.footer-links {
+  a {
+    text-decoration: none;
+    margin-right: 0.5em;
+  }
+}
