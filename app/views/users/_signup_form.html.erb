@@ -1,6 +1,6 @@
 <h1>Create an account</h1>
 <p>It's free and always will be.</p>
-<%= form_for @user do |f| %>
+<%= form_for @user, url: signup_path do |f| %>
   <% if @user.errors.any? %>
     <h3>Please check the fields.</h3>
   <% end %>
