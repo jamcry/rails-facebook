@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.create!(first_name: "Test", surname: "User", password: "foobar",
+    @user = User.new(first_name: "Test", surname: "User", password: "foobar",
                         email: "text@example.com", birthday: Date.new, gender_id: 1)
   end
 
@@ -28,4 +28,11 @@ class UserTest < ActiveSupport::TestCase
     assert_equal @user.gender, "Male"
   end
 
+  test "user's post should be destroyed with user" do
+    @user.save
+    @user.posts.create!(body: "Example post body")
+    assert_difference 'Post.count', -1 do
+      @user.destroy
+    end
+  end
 end
