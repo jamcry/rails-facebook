@@ -16,10 +16,17 @@
         <a class="nav-link" href="#">Pricing</a>
       </li>-->
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control form-control-sm mr-sm-3" type="email" placeholder="Email Address" aria-label="Email">
-      <input class="form-control form-control-sm mr-sm-2" type="password" placeholder="Password" aria-label="Password">
-      <button class="btn btn-sm btn-outline-primary my-2 my-sm-0" type="submit">Log In</button>
-    </form>
+    <div class = "form-inline my-2 my-lg-0 text-white">
+      <% if user_signed_in? %>
+        <%= current_user.first_name.capitalize %> |&nbsp
+        <%= link_to " logout", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= form_for User.new, url: signin_path  do |f| %>
+          <%= f.email_field :email, placeholder: "Email Address", class: "form-control form-control-sm mr-sm-3"%>
+          <%= f.password_field :password, placeholder: "Password", class: "form-control form-control-sm mr-sm-2"%>
+          <%= f.submit "Log in", class: "btn btn-sm btn-outline-primary my-2 my-sm-0"%>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </nav>

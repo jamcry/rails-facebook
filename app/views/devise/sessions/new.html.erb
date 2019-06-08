@@ -1,0 +1,28 @@
+<div class="jumbotron pt-4">
+  <div class="col-md-4 mx-auto text-center">
+    <h3>Log in to Facebook</h3>
+    <%= form_for(resource, as: resource_name, url: signin_path) do |f| %>
+      <div class="form-group">
+        <%= f.email_field :email, placeholder: "Email address", autofocus: true,
+                                  autocomplete: "email", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.password_field :password, placeholder: "Password", autocomplete: "current-password",
+                                        class: "form-control" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Log in", class: "btn btn-primary btn-lg w-100 mb-3"%><br>
+        <%= link_to "Recover Your Account", new_user_password_path, class: "btn btn-secondary w-100"%>
+      </div>
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+    <% end %>
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
+
+

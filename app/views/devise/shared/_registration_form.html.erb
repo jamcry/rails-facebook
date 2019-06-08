@@ -1,22 +1,20 @@
 <h1>Create an account</h1>
 <p>It's free and always will be.</p>
-<%= form_for @user, url: signup_path do |f| %>
-  <% if @user.errors.any? %>
-    <h3>Please check the fields.</h3>
-  <% end %>
+<%= form_for(resource, as: resource_name, url: signup_path) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <%= f.text_field :first_name, placeholder: "First name", class: "form-control" %>
+      <%= f.text_field :first_name, placeholder: "First name", class: "form-control form-control-lg", autofocus: true %>
     </div>
     <div class="form-group col-md-6">
-      <%= f.text_field :surname, placeholder:  "Surname", class: "form-control" %>
+      <%= f.text_field :surname, placeholder:  "Surname", class: "form-control form-control-lg" %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.email_field    :email, placeholder: "Email address", class: "form-control" %>
+    <%= f.email_field    :email, placeholder: "Email address", class: "form-control form-control-lg" %>
   </div>
   <div class="form-group">
-    <%= f.password_field :password, placeholder: "New password", class: "form-control" %>
+    <%= f.password_field :password, placeholder: "New password", class: "form-control form-control-lg" %>
   </div>
   <div class="form-group">
     <%= f.label :birthday %>
@@ -33,5 +31,7 @@
     </div>
   </div>
   <p><small>By clicking Sign Up, you agree to our Terms, Data Policy and Cookie Policy. You may receive SMS notifications from us and can opt out at any time.</small></p>
-  <%= f.submit "Sign Up", class: "btn btn-lg btn-success px-5 py-1" %>
+  <div class="actions">
+    <%= f.submit "Sign Up", class: "btn btn-lg btn-success py-1 w-50" %>
+  </div>
 <% end %>

@@ -1,17 +1,7 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  first_name: MyString
-  surname: MyString
-  email: MyString
-  password_digest: MyString
-  birthday: 2019-06-08
-  gender_id: 1
-
-two:
-  first_name: MyString
-  surname: MyString
-  email: MyString
-  password_digest: MyString
+cem:
+  first_name: Cem
+  surname: KIRAY
+  email: jamcry@hotmail.com
+  encrypted_password: BCrypt::Password.create("foobar")
   birthday: 2019-06-08
   gender_id: 1
