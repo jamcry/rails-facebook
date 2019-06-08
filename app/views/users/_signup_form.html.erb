@@ -23,10 +23,14 @@
     <%= f.date_field :birthday, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :gender_id %><br>
-    <% (User::GENDERS).each_with_index do |gender, gender_index| %>
-      <%= f.radio_button :gender_id, gender_index %><%= gender %>
-    <% end %>
+    <%= f.label :gender_id %>
+    <div class="row ml-3 mx-auto my-auto">
+      <% (User::GENDERS).each_with_index do |gender, gender_index| %>
+        <%= f.radio_button :gender_id, gender_index, class:"my-auto" %>
+        <%= f.label :gender_id, gender, for: "user_gender_id_#{gender_index}",
+                                class:"gender-label my-auto" %>
+      <% end %>
+    </div>
   </div>
   <p><small>By clicking Sign Up, you agree to our Terms, Data Policy and Cookie Policy. You may receive SMS notifications from us and can opt out at any time.</small></p>
   <%= f.submit "Sign Up", class: "btn btn-lg btn-success px-5 py-1" %>
