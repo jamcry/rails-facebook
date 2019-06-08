@@ -38,3 +38,19 @@ hr {
   padding: 10px;
   margin: 10px auto;
 }
+
+.posts {
+  list-style: none;
+  li {
+    border: 1px solid gray;
+  }
+  .user {
+    font-weight: bold;
+  }
+  .timestamp {
+    font-size: smaller;
+  }
+  .post-body {
+    font-size: 20px;
+  }
+}

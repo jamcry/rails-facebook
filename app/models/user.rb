@@ -17,4 +17,8 @@ class User < ApplicationRecord
   def gender
     GENDERS[gender_id]
   end
+
+  def full_name
+    "#{first_name.capitalize} #{surname.capitalize}"
+  end
 end

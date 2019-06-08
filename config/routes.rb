@@ -8,5 +8,5 @@ Rails.application.routes.draw do
     get  'signup', to: 'devise/registrations#new'
     post 'signup', to: 'devise/registrations#create'
   end
-  #resources :users
+  resources :users
 end

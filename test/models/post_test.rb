@@ -24,7 +24,8 @@ class PostTest < ActiveSupport::TestCase
     @post.save
     @post.comments.build(body: "Example first comment body", user: @user)
     @post.comments.build(body: "Example second comment body", user: @user)
-    assert_difference 'Comment.count', -(@post.comments.count) do
+    difference_amount = -(@post.comments.count)
+    assert_difference 'Comment.count', difference_amount do
       @post.destroy
     end
   end
