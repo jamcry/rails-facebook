@@ -1,0 +1,13 @@
+<%= form_for(@post) do |f| %>
+  <% user_name = current_user.first_name.capitalize %>
+  <div class="form-row">
+    <div class="col-auto">
+      <%= gravatar_for(current_user, size: 60) %>
+    </div>
+    <div class="col-md-10 border-0">
+      <%= f.text_area :body, placeholder: "What's on your mind, #{user_name}?", class:"form-control form-control-lg w-100 border-0" %>
+    </div>
+
+  </div>
+  <%= f.submit "Share", class: "btn btn-primary mt-2 w-100" %>
+<% end %>
