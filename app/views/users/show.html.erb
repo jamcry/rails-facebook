@@ -1,19 +1,39 @@
-<div class="container col-md-6 mt-4">
-  <div class="row">
+<div class="container mt-4 m-auto">
+  <div class="row border rounded p-3">
     <%= gravatar_for(@user, size: 120) %>
     <div class="col my-auto">
-    <h1><%= @user.full_name %></h1>
-    <p><%= @user.email.downcase %></p>
-    <%# if USER is not CURRENT_USER's friend %>
-    <%= link_to "Add Friend", '', class: "btn btn-sm btn-primary" %>
-    <%# end %>
+      <h1><%= @user.full_name %></h1>
+      <p><%= @user.email.downcase %></p>
+      <% if @user == current_user %>
+        <%= link_to "Update Info", '', class: "btn btn-sm btn-secondary"%>
+      <% else %> <%# and if USER is not CURRENT_USER's friend %>
+        <%= link_to "Add Friend", '', class: "btn btn-sm btn-primary" %>
+      <% end %>
     </div>
   </div>
-  <div class="mt-4 ml-5 m-2 p-2  border rounded">
-    <%= render 'posts/post_form' %>
+  <div class="row mt-3">
+    <div class="col-md-4">
+      <div class="border rounded p-2 mb-3">
+        <h3>Info</h3>
+        <p>Here will be the information about the user.
+        For now, just this text. Just to fill up the space.</p>
+      </div>
+      
+      <div class="border rounded p-2 mb-3">
+        <h3>Friends</h3>
+        <p>And here will be the list of the users friends, if any.
+        Small pictures with links to profiles will be shown.</p>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="p-3 border rounded mx-2 mb-4">
+        <%= render 'posts/post_form' %>
+      </div>
+      <h3>Posts</h3>
+      <ul class="posts m-0 p-0">
+        <%= render @posts if !@posts.nil? %>
+      </ul>
+    </div>  
   </div>
-  <h3>Posts</h3>
-  <ul class="posts">
-    <%= render @posts if !@posts.nil? %>
-  </ul>
+
 </div>
