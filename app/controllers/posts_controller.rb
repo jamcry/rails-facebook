@@ -9,6 +9,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to stored_location_for(:user)
+  end
   private
 
     def post_params
