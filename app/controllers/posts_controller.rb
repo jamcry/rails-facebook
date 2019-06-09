@@ -14,9 +14,11 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to stored_location_for(:user)
   end
+
+
   private
 
-    def post_params
-      params.require(:post).permit(:body)
-    end
+      def post_params
+        params.require(:post).permit(:body)
+      end
 end

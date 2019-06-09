@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     @post = current_user.posts.build if user_signed_in?
   end
 
+  
   private
 
       def user_params
