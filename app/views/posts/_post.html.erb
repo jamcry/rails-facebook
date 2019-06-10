@@ -23,6 +23,24 @@
     <%= link_to "- Delete", post_path(post), method: :delete, data: { confirm: "You are deleting the post!"} if (post.user == current_user) %>
     </span>
   </div>
+  <hr>
+  <div class="new-post-comment pt-3">
+    <% comment = post.comments.build %>
+    <%= form_for comment, url: post_comments_path(post) do |f| %>
+      <div class="row">
+        <div class="col-auto">
+          <%= gravatar_for(current_user, size: 40) %>
+        </div>
+        <div class="col-md-9 p-0 my-auto">
+          <%= f.text_field :body, placeholder: "Write a comment...", 
+                                  class: "form-control", autocomplete: false %>
+        </div>
+        <div class="col-auto ml-0 pl-1 my-auto">
+          <%= f.submit "Send", class: "btn btn-info" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
   <div class="post-comments ml-4 p-0">
     <%= render post.comments %>
   </div>
