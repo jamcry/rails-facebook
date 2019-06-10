@@ -12,15 +12,18 @@
       </span>
     </div>
   </div>
-  <div class="row m-auto">
+  <div class="post-body row m-auto">
     <span class="post-body ml-2"><%= post.body %></span><br>
   </div>
-  <div class="row ml-2">
+  <div class="post-actions row ml-2">
     <span class="post-actions small">
     <%= link_to "Like" %> -
     <%= link_to "Comment" %> -
     <%= link_to "Share" %>
     <%= link_to "- Delete", post_path(post), method: :delete, data: { confirm: "You are deleting the post!"} if (post.user == current_user) %>
     </span>
+  </div>
+  <div class="post-comments ml-4 p-0">
+    <%= render post.comments %>
   </div>
 </li>
