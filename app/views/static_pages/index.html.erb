@@ -1,11 +1,15 @@
-<div class="jumbotron pt-4">
-  <div class="row mx-5">
-    <div class="col-md-6 mr-auto my-auto">
-      <h4>Facebook helps you connect and share with the people in your life.</h4>
-      <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yi/r/OBaVg52wtTZ.png" class="img-fluid" alt="facebook homepage connect">
+<% if !user_signed_in? %>
+  <div class="jumbotron pt-4">
+      <div class="row mx-5">
+        <div class="col-md-6 mr-auto my-auto">
+          <h4>Facebook helps you connect and share with the people in your life.</h4>
+          <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yi/r/OBaVg52wtTZ.png" class="img-fluid" alt="facebook homepage connect">
+        </div>
+        <div class="col-md-6">
+          <%= render 'devise/shared/registration_form' %>
+        </div>
+      </div>
     </div>
-    <div class="col-md-6">
-      <%= render 'devise/shared/registration_form' %>
-    </div>
-  </div>
-</div>
+<% else %>
+  <%= render 'user_feed' %>
+<% end %>
