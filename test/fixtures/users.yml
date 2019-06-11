@@ -1,7 +1,7 @@
-jamcry:
-  first_name: Cem
-  surname: KIRAY
-  email: jamcry@hotmail.com
+test_user_1:
+  first_name: "Example"
+  surname: "User 1"
+  email: "example1@user1.com"
   encrypted_password: BCrypt::Password.create("foobar")
   birthday: 2019-06-08
   gender_id: 1

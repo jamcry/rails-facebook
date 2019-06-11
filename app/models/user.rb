@@ -3,6 +3,10 @@ class User < ApplicationRecord
   has_many :comments
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
+  has_many :friendship_requests
+  has_many :pending_friends, through: :friendship_requests,
+                             source: :requested_user
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -40,5 +44,15 @@ class User < ApplicationRecord
   # Returns latest posts feed from friends and user
   def feed
     Post.where("user_id IN (?) OR user_id = ?", friend_ids, id).feed
+  end
+
+  # Returns friendship requests sent to the user if any, returns nil otherwise
+  def recieved_requests
+    FriendshipRequest.where("requested_user_id = ?", id)
+  end
+
+  # Create a new friendship requests from user to other_user
+  def send_friendship_request(other_user)
+    friendship_requests.create!(requested_user: other_user) if !self.friends_with?(other_user)
   end
 end

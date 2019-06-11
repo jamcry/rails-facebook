@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PostTest < ActiveSupport::TestCase
   def setup
-    @user = users(:jamcry)
+    @user = users(:test_user_1)
     @post = @user.posts.build(body: "Example post body")
   end
 
