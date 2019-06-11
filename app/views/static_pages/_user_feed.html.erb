@@ -4,6 +4,6 @@
   </div>
   <h3>Feed</h3>
   <ul class="posts m-0 p-0">
-    <%= render current_user.posts.feed if user_signed_in? && !current_user.posts.nil? %>
+    <%= render current_user.feed.take(5) if user_signed_in? && !current_user.posts.nil? %>
   </ul>
 </div>

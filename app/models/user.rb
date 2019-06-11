@@ -34,4 +34,8 @@ class User < ApplicationRecord
   def friends_with?(other_user)
     friends.include?(other_user)
   end
+
+  def feed
+    Post.where("user_id IN (?) OR user_id = ?", friend_ids, id).feed
+  end
 end
