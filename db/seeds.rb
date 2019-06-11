@@ -18,6 +18,9 @@ User.create!(first_name: "Cem", surname: "KIRAY", email: "jamcry@hotmail.com", p
                    birthday:   Faker::Date.birthday(18, 50),
                    password:   "foobar",
                    gender_id:  rand(0..2))
+  rand(1..5).times {
+    u.make_friends_with(User.find(rand((User.first.id)..(User.last.id))))
+  }
   rand(1..35).times {
     p = u.posts.create!(body: Faker::Quote.famous_last_words)
     rand(1..15).times {
