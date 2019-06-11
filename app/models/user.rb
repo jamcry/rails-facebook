@@ -24,6 +24,7 @@ class User < ApplicationRecord
     "#{first_name.capitalize} #{surname.capitalize}"
   end
 
+  # Create bidirectional friendship between self and given user
   def make_friends_with(other_user)
     if (self != other_user) && !self.friends.include?(other_user)
       self.friendships.create!(friend: other_user)
@@ -31,10 +32,12 @@ class User < ApplicationRecord
     end
   end
 
+  # Returns true if user is friends with other_user
   def friends_with?(other_user)
     friends.include?(other_user)
   end
 
+  # Returns latest posts feed from friends and user
   def feed
     Post.where("user_id IN (?) OR user_id = ?", friend_ids, id).feed
   end
