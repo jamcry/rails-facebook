@@ -5,3 +5,11 @@ test_user_1:
   encrypted_password: BCrypt::Password.create("foobar")
   birthday: 2019-06-08
   gender_id: 1
+
+test_user_2:
+  first_name: "Example"
+  surname: "User 2"
+  email: "example2@user2.com"
+  encrypted_password: BCrypt::Password.create("foobar")
+  birthday: 2019-06-08
+  gender_id: 1

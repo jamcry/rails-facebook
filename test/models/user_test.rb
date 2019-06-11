@@ -3,7 +3,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   def setup
     @user = User.new(first_name: "Test", surname: "User", password: "foobar",
-                        email: "text@example.com", birthday: Date.new, gender_id: 1)
+                     email: "text@example.com", birthday: Date.new, gender_id: 1)
   end
 
   test "all fields should be present" do
@@ -36,4 +36,13 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test "should be friend and unfriend users" do
+    user = users(:test_user_1)
+    friend = users(:test_user_2)
+    assert_not user.friends_with? friend
+    assert_not friend.friends_with? user
+    user.make_friends_with(friend)
+    assert user.friends_with? friend
+    assert friend.friends_with? user
+  end
 end

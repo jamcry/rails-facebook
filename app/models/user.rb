@@ -36,6 +36,12 @@ class User < ApplicationRecord
     end
   end
 
+  # Remove bidirectional friendship between self and given user
+  def unfriend(other_user)
+    self.friendships.find_by(friend: other_user).destroy
+    other_user.friendships.find_by(friend: self).destroy
+  end
+
   # Returns true if user is friends with other_user
   def friends_with?(other_user)
     friends.include?(other_user)
