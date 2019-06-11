@@ -1,20 +1,11 @@
 <% if user_signed_in? %>
   <% if @user == current_user %>
     <%= link_to "Update Info", '', class: "btn btn-sm btn-secondary"%>
-
   <% elsif current_user.pending_friends.include? @user %>
-    <%= form_for(current_user.friendship_requests.find_by(requested_user_id: @user.id),
-                                                          html: { method: :delete } ) do |f| %>
-      <%= f.submit "Cancel Friend Request", class: "btn btn-secondary",
-                                            data: { confirm: "You are cancelling the friend request!" } %>
-    <% end %>
-
+    <%= render 'cancel_request_form' %>
   <% elsif !@user.friends_with?(current_user) %>
-
-    <%= form_for(current_user.friendship_requests.build) do |f| %>
-      <%= hidden_field_tag :requested_user_id, @user.id %>
-      <%= f.submit "Add Friend", class: "btn btn-primary"%>
-    <% end %>
-
+    <%= render 'send_request_form' %>
+  <% elsif @user.friends_with?(current_user) %>
+    <p>Friends!</p>
   <% end %>
 <% end %>
