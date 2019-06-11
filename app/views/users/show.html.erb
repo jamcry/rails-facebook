@@ -4,10 +4,12 @@
     <div class="col my-auto">
       <h1><%= @user.full_name %></h1>
       <p><%= @user.email.downcase %></p>
-      <% if @user == current_user %>
-        <%= link_to "Update Info", '', class: "btn btn-sm btn-secondary"%>
-      <% else %> <%# and if USER is not CURRENT_USER's friend %>
-        <%= link_to "Add Friend", '', class: "btn btn-sm btn-primary" %>
+      <% if user_signed_in? %>
+        <% if @user == current_user %>
+          <%= link_to "Update Info", '', class: "btn btn-sm btn-secondary"%>
+        <% else %> <%# and if USER is not CURRENT_USER's friend %>
+          <%= link_to "Add Friend", '', class: "btn btn-sm btn-primary" %>
+        <% end %>
       <% end %>
     </div>
   </div>
