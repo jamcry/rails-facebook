@@ -9,7 +9,7 @@
     <p>Friends!</p>
   <% end %>
 <% else %>
-    <p class="mt-0 pt-0"><b><%= @user.full_name %> is on Facebook.</b>
+    <p><b><%= @user.full_name %> is on Facebook.</b>
     <%= link_to "Log In", :signin, class: "btn btn-primary btn-sm" %> or
     <%= link_to "Sign Up", :signup, class: "btn btn-success btn-sm" %> to connect <%= @user.first_name %>
     </p>
