@@ -4,13 +4,7 @@
     <div class="col my-auto">
       <h1><%= @user.full_name %></h1>
       <p><%= @user.email.downcase %></p>
-      <% if user_signed_in? %>
-        <% if @user == current_user %>
-          <%= link_to "Update Info", '', class: "btn btn-sm btn-secondary"%>
-        <% elsif !@user.friends_with?(current_user) %>
-          <%= link_to "Add Friend", '', class: "btn btn-sm btn-primary" %>
-        <% end %>
-      <% end %>
+      <%= render 'users/friendship_status' %>
     </div>
   </div>
   <div class="row mt-3">

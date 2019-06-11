@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
-  has_many :friendship_requests
+  has_many :friendship_requests, dependent: :destroy
   has_many :pending_friends, through: :friendship_requests,
                              source: :requested_user
   
