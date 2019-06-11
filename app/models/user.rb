@@ -30,4 +30,8 @@ class User < ApplicationRecord
       other_user.friendships.create!(friend: self)
     end
   end
+
+  def friends_with?(other_user)
+    friends.include?(other_user)
+  end
 end

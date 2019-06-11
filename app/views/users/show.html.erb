@@ -7,7 +7,7 @@
       <% if user_signed_in? %>
         <% if @user == current_user %>
           <%= link_to "Update Info", '', class: "btn btn-sm btn-secondary"%>
-        <% else %> <%# and if USER is not CURRENT_USER's friend %>
+        <% elsif !@user.friends_with?(current_user) %>
           <%= link_to "Add Friend", '', class: "btn btn-sm btn-primary" %>
         <% end %>
       <% end %>
@@ -22,9 +22,16 @@
       </div>
       
       <div class="border rounded p-2 mb-3">
-        <h3>Friends</h3>
-        <p>And here will be the list of the users friends, if any.
-        Small pictures with links to profiles will be shown.</p>
+        <h3>Friends <span class="badge badge-pill badge-success"><%= @user.friends.count %></span></h3>
+        <% if @user.friends.any? %>
+          <ul>
+            <% @user.friends.each do |friend| %>
+              <li><%= friend.full_name %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>None yet.</p>
+        <% end %>
       </div>
     </div>
     <div class="col-md-8">
