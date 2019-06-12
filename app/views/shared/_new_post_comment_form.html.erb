@@ -1,0 +1,14 @@
+<%= form_for(post.comments.build, url: post_comments_path(post)) do |f| %>
+  <div class="row">
+    <div class="col-auto">
+      <%= gravatar_for(current_user, size: 40) %>
+    </div>
+    <div class="col-md-9 p-0 my-auto">
+      <%= f.text_field :body, placeholder: "Write a comment...", 
+                              class: "form-control", autocomplete: false %>
+    </div>
+    <div class="col-auto ml-0 pl-1 my-auto">
+      <%= f.submit "Send", class: "btn btn-info" %>
+    </div>
+  </div>
+<% end %>
