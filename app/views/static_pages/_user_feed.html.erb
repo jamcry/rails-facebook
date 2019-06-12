@@ -1,4 +1,6 @@
-<div class="col-md-6 m-auto">
+<div class="container mt-4 m-auto">
+<div class="row mt-3">
+<div class="col-md-8">
   <div class="p-3 border rounded mx-2 mb-4">
     <%= render 'posts/post_form' %>
   </div>
@@ -6,4 +8,12 @@
   <ul class="posts m-0 p-0">
     <%= render current_user.feed.take(5) if user_signed_in? && !current_user.posts.nil? %>
   </ul>
+</div>
+<div class="col-md-4">
+  <div class="p-3 border rounded mx-2 mb-4">
+    <h3>Pending Reqests</h3>
+    <%= render 'pending_requests' %>
+  </div>
+</div>
+</div>
 </div>

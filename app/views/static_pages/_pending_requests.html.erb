@@ -1,0 +1,15 @@
+<% if current_user.recieved_requests.any? %>
+  <ul class="list-group">
+    <% current_user.recieved_requests.each do |request| %>
+      <% friend = request.user %>
+      <li class="list-group-item">
+      <%= link_to gravatar_for(friend, size: 50), friend %>
+      <%= friend.full_name %> wants to be your friend!
+      <%= form_for(current_user.friendships.build) do |f| %>
+        <%= hidden_field_tag :friend_id, friend.id %>
+        <%= f.submit "Accept", class: "btn btn-success btn-sm"%>
+      <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
