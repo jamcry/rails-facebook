@@ -3,10 +3,10 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to current_user
+      redirect_to stored_location_for(:user)
     else
       flash[:danger] = "Cannot create new post"
-      redirect_to current_user
+      redirect_to stored_location_for(:user)
     end
   end
 
