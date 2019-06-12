@@ -6,7 +6,7 @@
   <% elsif !@user.friends_with?(current_user) %>
     <%= render 'send_request_form' %>
   <% elsif @user.friends_with?(current_user) %>
-    <p>Friends!</p>
+    <%= render 'unfriend_form' %>
   <% end %>
 <% else %>
     <p><b><%= @user.full_name %> is on Facebook.</b>
