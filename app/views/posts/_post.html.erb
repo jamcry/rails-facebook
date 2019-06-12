@@ -20,7 +20,11 @@
     <%= link_to "Like" %> -
     <%= link_to "Comment" %> -
     <%= link_to "Share" %>
-    <%= link_to "- Delete", post_path(post), method: :delete, data: { confirm: "You are deleting the post!"} if (post.user == current_user) %>
+    <% if post.user == current_user %>
+    - <%= link_to "Delete", post_path(post),
+                            method: :delete,
+                            data: { confirm: "You are deleting the post!"} %>
+    <% end %>
     </span>
   </div>
   <hr>

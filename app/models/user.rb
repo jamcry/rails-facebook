@@ -57,6 +57,11 @@ class User < ApplicationRecord
     FriendshipRequest.where("requested_user_id = ?", id)
   end
 
+  # Returns list of users who sent friendship requests to current user
+  def recieved_requests_users
+    recieved_requests.map(&:user)
+  end
+
   # Create a new friendship requests from user to other_user
   def send_friendship_request(other_user)
     friendship_requests.create!(requested_user: other_user) if !self.friends_with?(other_user)
