@@ -4,7 +4,7 @@
   <% elsif current_user.recieved_requests_users.include? @user %>
     <%= render 'shared/pending_request', friend: @user %>
   <% elsif current_user.pending_friends.include? @user %>
-    <%= render 'cancel_request_form' %>
+    <%= render 'cancel_request_form', user: @user %>
   <% elsif !@user.friends_with?(current_user) %>
     <%= render 'send_request_form' %>
   <% elsif @user.friends_with?(current_user) %>

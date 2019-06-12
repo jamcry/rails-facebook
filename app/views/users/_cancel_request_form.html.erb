@@ -1,5 +1,5 @@
-<%= form_for(current_user.friendship_requests.find_by(requested_user_id: @user.id),
+<%= form_for(current_user.friendship_requests.find_by(requested_user_id: user.id),
                                                       html: { method: :delete } ) do |f| %>
-  <%= f.submit "Cancel Friend Request", class: "btn btn-secondary",
+  <%= f.submit "Cancel Friend Request", class: "btn btn-secondary btn-sm",
                                         data: { confirm: "You are cancelling the friend request!" } %>
 <% end %>
