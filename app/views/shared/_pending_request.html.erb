@@ -1,6 +1,6 @@
 <%= link_to gravatar_for(friend, size: 50), friend if current_page?(action: :index)%>
 <%= form_for(current_user.friendships.build) do |f| %>
   <%= hidden_field_tag :friend_id, friend.id %>
-  <small><%= friend.full_name %> wants to be your friend!</small>
+  <small><%= friend.full_name %> wants to be your friend !</small>
   <%= f.submit "Accept", class: "btn btn-success btn-sm inline"%>
 <% end %>
