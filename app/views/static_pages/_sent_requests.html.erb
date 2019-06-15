@@ -3,7 +3,8 @@
     <% current_user.pending_friends.each do |friend| %>
       <li class="list-group-item">
         <%= link_to gravatar_for(friend, size: 50), friend if current_page?(action: :index)%>
-        <small>Request sent to <%= friend.full_name %></small>
+        <small>Request sent to <%= friend.full_name %>,</small><br>
+        <small><em><%= time_ago_in_words(current_user.friendship_requests.find_by(requested_user: friend).created_at) %> ago</em></small>
         <%= render 'users/cancel_request_form', user: friend %>
       </li>
     <% end %>
