@@ -19,16 +19,18 @@
     <span class="post-actions small">
     <span><%= pluralize(post.likes.count, 'Like') %></span><br>
     <% if like = post.likes.find_by(user: current_user) %>
-      <%= link_to "Unlike", post_like_path(post, like), method: :delete, class: "btn btn-sm btn-inline "%> -
+      <%= link_to "Unlike", post_like_path(post, like), method: :delete,
+                            class: "btn btn-sm btn-inline "%> -
     <% else %>
-      <%= link_to "Like", post_likes_path(post), method: :post, class: "btn btn-sm btn-inline "%> -
+      <%= link_to "Like", post_likes_path(post), method: :post,
+                          class: "btn btn-sm btn-inline "%> -
     <% end %>
-    <%= link_to "Comment", '', class: "btn btn-sm btn-inline", id: "comment-btn",
+    <%= link_to "Comment", nil, class: "btn btn-sm btn-inline", id: "comment-btn",
                                data: { comment_form_id: "new-comment-#{post.id}" } %> -
-    <%= link_to "Share", '', class: "btn btn-sm btn-inline" %>
+    <%= link_to "Share", nil, class: "btn btn-sm btn-inline" %>
     <% if post.user == current_user %>
-    - <%= link_to "Delete", post_path(post),
-                            method: :delete,
+    - <%= link_to "Delete", post_path(post), method: :delete,
+                            class: "btn btn-sm btn-inline",
                             data: { confirm: "You are deleting the post!"} %>
     <% end %>
     </span>
