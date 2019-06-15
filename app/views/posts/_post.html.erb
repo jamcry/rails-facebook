@@ -23,7 +23,8 @@
     <% else %>
       <%= link_to "Like", post_likes_path(post), method: :post, class: "btn btn-sm btn-inline "%> -
     <% end %>
-    <%= link_to "Comment", '', class: "btn btn-sm btn-inline" %> -
+    <%= link_to "Comment", '', class: "btn btn-sm btn-inline", id: "comment-btn",
+                               data: { comment_form_id: "new-comment-#{post.id}" } %> -
     <%= link_to "Share", '', class: "btn btn-sm btn-inline" %>
     <% if post.user == current_user %>
     - <%= link_to "Delete", post_path(post),
@@ -35,7 +36,7 @@
   <hr>
   <% if user_signed_in? %>
     <div class="new-post-comment pt-3">
-      <%= render 'shared/new_post_comment_form', post: post %>
+      <%= render 'shared/new_post_comment_form', post: post  %>
     </div>
   <% end %>
   <div class="post-comments ml-4 p-0">
