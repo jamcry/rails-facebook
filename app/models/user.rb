@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments
+  has_many :likes, dependent: :destroy
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
   has_many :friendship_requests, dependent: :destroy

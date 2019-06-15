@@ -13,13 +13,18 @@
     </div>
   </div>
   <div class="post-body row m-auto">
-    <span class="post-body ml-2"><%= post.body %></span><br>
+    <span class="post-body ml-2"><%= post.body %></span>
   </div>
   <div class="post-actions row ml-2">
     <span class="post-actions small">
-    <%= link_to "Like" %> -
-    <%= link_to "Comment" %> -
-    <%= link_to "Share" %>
+    <span><%= pluralize(post.likes.count, 'Like') %></span><br>
+    <% if like = post.likes.find_by(user: current_user) %>
+      <%= link_to "Unlike", post_like_path(post, like), method: :delete, class: "btn btn-sm btn-inline "%> -
+    <% else %>
+      <%= link_to "Like", post_likes_path(post), method: :post, class: "btn btn-sm btn-inline "%> -
+    <% end %>
+    <%= link_to "Comment", '', class: "btn btn-sm btn-inline" %> -
+    <%= link_to "Share", '', class: "btn btn-sm btn-inline" %>
     <% if post.user == current_user %>
     - <%= link_to "Delete", post_path(post),
                             method: :delete,
