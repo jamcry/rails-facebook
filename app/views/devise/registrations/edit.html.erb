@@ -31,8 +31,14 @@
         <%= f.password_field :current_password, placeholder: "Current Password", autocomplete: "current-password", class: "form-control" %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "Update", class: "btn btn-primary btn-lg" %>
+      <div class="gravatar-change w-50 float-left">
+        <%= gravatar_for(current_user, size: 60) %>
+        <%= link_to "Change photo", 'https://en.gravatar.com/emails', target: '_blank',
+                         data: { confirm: "You will be redirected to gravatar.com" } %>
+        <br><div class="small"><em>(Redirects to Gravatar)</em></div>
+      </div>
+      <div class="actions clearfix">
+        <%= f.submit "Update", class: "btn btn-primary btn-lg float-right" %>
       </div>
     <% end %>
     <br>
