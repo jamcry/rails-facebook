@@ -11,14 +11,14 @@ User.destroy_all
 
 User.create!(first_name: "Cem", surname: "KIRAY", email: "jamcry@hotmail.com", password: "foobar", birthday: Date.new, gender_id: 0)
 
-10.times {
+50.times {
   u = User.create!(first_name: Faker::Name.first_name,
                    surname:    Faker::Name.last_name,
                    email:      Faker::Internet.email,
                    birthday:   Faker::Date.birthday(18, 50),
                    password:   "foobar",
                    gender_id:  rand(0..2))
-  rand(1..5).times {
+  rand(1..25).times {
     u.make_friends_with(User.find(rand((User.first.id)..(User.last.id))))
   }
   rand(1..35).times {
@@ -29,3 +29,12 @@ User.create!(first_name: "Cem", surname: "KIRAY", email: "jamcry@hotmail.com", p
     }
   }
 }
+
+Post.all.each do |post|
+  rand(1..50).times {
+    random_user = User.find(rand((User.first.id)..(User.last.id)))
+    if !post.likes.where(user: random_user).exists?
+      like = post.likes.create!(user: random_user)
+    end
+  }
+end
