@@ -9,9 +9,10 @@ class User < ApplicationRecord
                              source: :requested_user
   
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # :confirmable, :lockable, :timeoutable and :trackable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i[facebook]
   GENDERS = ["Male", "Female", "Other"]
   validates :first_name, presence: true
   validates :surname,    presence: true
