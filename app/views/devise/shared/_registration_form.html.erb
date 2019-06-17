@@ -33,7 +33,9 @@
   <p><small>By clicking Sign Up, you agree to our Terms, Data Policy and Cookie Policy. You may receive SMS notifications from us and can opt out at any time.</small></p>
   <div class="actions">
     <%= f.submit "Sign Up", class: "btn btn-lg btn-success py-1 float-left" %>
-    <%= link_to "Sign in with facebook", user_facebook_omniauth_authorize_path,
-                   class: "btn btn-lg btn-primary py-1 float-right clearfix" %>
+    <%= link_to user_facebook_omniauth_authorize_path,
+                class: "btn btn-primary btn-x float-right my-auto clearfix" do %>
+      <span><img src="<%= image_url('icon_facebook.png')%>"></span> Continue with Facebook
+    <% end %>
   </div>
 <% end %>
