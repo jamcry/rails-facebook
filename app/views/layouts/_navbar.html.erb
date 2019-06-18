@@ -1,25 +1,28 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">facebook <em>on Rails</em></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <a class="navbar-brand" href="/"><%= image_tag('logo.png')%> facebook <em>on Rails</em></a>
   <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <!--Navbar Links
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>-->
-    </ul>
-    <div class = "form-inline my-2 my-lg-0 text-white">
+    <div class="form-inline my-2 my-lg-0 text-white ml-auto">
       <% if user_signed_in? %>
-        <%= current_user.first_name.capitalize %> |&nbsp
-        <%= link_to " logout", destroy_user_session_path, method: :delete %>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <%= link_to "Home", root_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Find Friends", users_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <b><%= current_user.full_name %></b>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "My Profile", user_path(current_user), class: "dropdown-item" %>
+              <%= link_to "Settings",   edit_user_registration_path(current_user), class: "dropdown-item"%>
+              <div class="dropdown-divider"></div>
+              <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item",
+                                           data: { confirm: "You are logging out from RailsFacebook !" } %>
+            </div>
+          </li>
+        </ul>
       <% else %>
         <%= form_for User.new, url: signin_path  do |f| %>
           <%= f.email_field :email, placeholder: "Email Address", class: "form-control form-control-sm mr-sm-3"%>

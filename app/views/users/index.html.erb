@@ -11,11 +11,11 @@
         <div class="col-auto pr-0 ml-auto mr-2 my-auto"><%= render 'friendship_status', user: user %></p></div>
       </div>
     <% end %>
-    <div class="digg_pagination text-center mt-3 p-0">
+    <div class="apple_pagination text-center mt-3 p-0">
         <div class="page_info">
           <%= page_entries_info @users %>
         </div>
         <%= will_paginate @users, :container => false %>
-      </div>
+    </div>
   </div>
 </div>
