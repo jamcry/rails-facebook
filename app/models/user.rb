@@ -19,8 +19,13 @@ class User < ApplicationRecord
   validates :email,      presence: true
   validates :birthday,   presence: true
   validates :gender_id,  presence: true, inclusion: (0..GENDERS.length)
-  #has_secure_password
-
+ 
+  after_create :send_welcome_email
+  def send_welcome_email
+    # Set UserMailer to send a welcome email after save
+    UserMailer.with(user: self).welcome_email.deliver_now
+  end
+  
   # Returns the gender string of user according to gender_id
   def gender
     GENDERS[gender_id]

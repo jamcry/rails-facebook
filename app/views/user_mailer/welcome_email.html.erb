@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body style="font-family: Arial;">
+    <h1>Welcome to RailsFacebook, <%= @user.first_name %>!</h1>
+    <p>
+      Thanks for joining us! You have successfully signed up
+      to RailsFacebook as <%= @user.full_name %>.
+    </p>
+    <p>
+      To login to the site, follow <%= link_to 'this link', @url %>.
+    </p>
+    <small>
+      The RailsFacebook is a non-commercial app created by jamcry.
+      Contact jamcry@hotmail.com for any questions.
+    </small>
+  </body>
+</html>
