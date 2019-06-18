@@ -1,14 +1,14 @@
 <% if user_signed_in? %>
-  <% if @user == current_user %>
+  <% if user == current_user %>
     <%= link_to "Update Info", edit_user_registration_path(current_user), class: "btn btn-sm btn-secondary"%>
-  <% elsif current_user.recieved_requests_users.include? @user %>
-    <%= render 'shared/pending_request', friend: @user %>
-  <% elsif current_user.pending_friends.include? @user %>
-    <%= render 'cancel_request_form', user: @user %>
-  <% elsif !@user.friends_with?(current_user) %>
-    <%= render 'send_request_form' %>
-  <% elsif @user.friends_with?(current_user) %>
-    <%= render 'unfriend_form' %>
+  <% elsif current_user.recieved_requests_users.include? user %>
+    <%= render 'shared/pending_request', friend: user %>
+  <% elsif current_user.pending_friends.include? user %>
+    <%= render 'cancel_request_form', user: user %>
+  <% elsif !user.friends_with?(current_user) %>
+    <%= render 'send_request_form', user: user %>
+  <% elsif user.friends_with?(current_user) %>
+    <%= render 'unfriend_form', user: user %>
   <% end %>
 <% else %>
     <p><b><%= @user.full_name %> is on Facebook.</b>

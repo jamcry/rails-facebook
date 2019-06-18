@@ -1,0 +1,21 @@
+<div class="jumbotron pt-4">
+  <div class="col-md-6 mx-auto">
+    <h1>Users</h1>
+    <% @users.each do |user| %>
+      <div class="row border border-black rounded mb-2 mx-auto py-2 bg-white">
+        <div class="col-auto"><%= link_to gravatar_for(user, size: 60), user_path(user) %></div>
+        <div class="col-md-3">
+          <%= user.full_name %>
+          <small><em><%= user.email %></em></small>
+        </div>
+        <div class="col-auto pr-0 ml-auto mr-2 my-auto"><%= render 'friendship_status', user: user %></p></div>
+      </div>
+    <% end %>
+    <div class="digg_pagination text-center mt-3 p-0">
+        <div class="page_info">
+          <%= page_entries_info @users %>
+        </div>
+        <%= will_paginate @users, :container => false %>
+      </div>
+  </div>
+</div>

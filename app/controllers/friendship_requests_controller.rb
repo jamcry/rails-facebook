@@ -4,7 +4,7 @@ class FriendshipRequestsController < ApplicationController
     @friendship_request = current_user.friendship_requests.build(requested_user: requested_user)
     if @friendship_request.save
       flash[:success] = "Friendship request was sent!"
-      redirect_to @friendship_request.requested_user
+      redirect_to stored_location_for(:user)
     else
       flash[:danger] = "The request couldn't be sent!"
       redirect_to stored_location_for(:user)

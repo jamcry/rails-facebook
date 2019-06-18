@@ -19,6 +19,11 @@ class UsersController < ApplicationController
     @post = current_user.posts.build if user_signed_in?
   end
   
+  def index
+    @users = User.paginate(page: params[:page], per_page: 10)
+  end
+
+
   private
 
       def user_params
