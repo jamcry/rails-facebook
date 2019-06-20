@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :surname,    presence: true
   validates :email,      presence: true
-  validates :birthday,   presence: true
+  validates :birthday,   presence: true, inclusion: (105.years.ago..13.years.ago)
   validates :gender_id,  presence: true, inclusion: (0..GENDERS.length)
  
   after_create :send_welcome_email
