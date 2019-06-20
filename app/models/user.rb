@@ -8,11 +8,10 @@ class User < ApplicationRecord
   has_many :pending_friends, through: :friendship_requests,
                              source: :requested_user
   
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :trackable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook]
+         
   GENDERS = ["Male", "Female", "Other"]
   validates :first_name, presence: true
   validates :surname,    presence: true
@@ -31,6 +30,7 @@ class User < ApplicationRecord
     GENDERS[gender_id]
   end
 
+  # Returns the string of full name of the user
   def full_name
     "#{first_name.capitalize} #{surname.capitalize}"
   end
@@ -74,6 +74,8 @@ class User < ApplicationRecord
     friendship_requests.create!(requested_user: other_user) if !self.friends_with?(other_user)
   end
 
+  # Omniauth helper methods
+  
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
