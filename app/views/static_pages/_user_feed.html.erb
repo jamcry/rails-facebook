@@ -6,7 +6,20 @@
   </div>
   <h3>Feed</h3>
   <ul class="posts m-0 p-0">
-    <%= render current_user.feed.take(5) if user_signed_in? && !current_user.posts.nil? %>
+    <% if current_user.feed.any? %>
+      <%= render current_user.feed.take(5) %>
+    <% else %>
+      <div class="justify-text border border-gray rounded p-3">
+        <h4>Your feed is empty :(</h4>
+          <p>There is nothing to show at this time. You can try creating
+          a new post now from above, or add more friends to see what
+          they are sharing.</p>
+        <h4>Get started</h4>
+          <p>Use the form above, which is next to your avatar, to write
+          your thoughts, then click on the blue share button to share it
+        with the world!</p>
+      </div>
+    <% end %>
   </ul>
 </div>
 <div class="col-md-4">

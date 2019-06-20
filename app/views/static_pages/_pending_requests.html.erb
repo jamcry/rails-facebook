@@ -7,4 +7,10 @@
       </li>
     <% end %>
   </ul>
+<% else %>
+<div class="text-justify">
+  You have no pending request at the moment.
+  Check <%= link_to 'Find Friends', users_path %>
+  page to find and add new friends.
+</div>
 <% end %>
