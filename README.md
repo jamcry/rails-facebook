@@ -1,6 +1,11 @@
 # Rails Facebook
 
-Rails Facebook is a facebook clone app developed with Ruby on Rails. It is still in progress and It will have most of the basic functionality of the real Facebook.
+Rails Facebook is a social media app similar to Facebook developed with Ruby on Rails. It has features such as:
+- Add/Remove Friendship
+- Posting and Commenting
+- Profile Editing
+- Signup Emails
+- OAuth with Facebook
 
 It is the [final project](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project) of the Odin Project's Ruby on Rails course.
 
@@ -12,9 +17,10 @@ It is the [final project](https://www.theodinproject.com/courses/ruby-on-rails/l
 bundle install
 ```
 
-2. Create databases:
+2. Create and migrate databases:
 
 ```bash
+rails db:create
 rails db:migrate
 ```
 
@@ -28,7 +34,13 @@ If you get database related errors, check Database Configuration section below.
 
 ### Database Configuration
 
-This app uses PostgreSQL database. If you are getting NoDatabaseError or a similar error related to database, you should probably create a role in the database for your user.
+This app uses PostgreSQL database. First, make sure that you have PostgreSQL server installed on your machine. If not, install these first:
+
+```bash
+$ sudo apt-get install postgresql postgresql-contrib libpq-dev
+```
+
+Then, if you are getting NoDatabaseError or a similar error related to database, you should probably create a role in the database for your user.
 
 1. Change to superuser mode as postgres user that is created automatically:
 
