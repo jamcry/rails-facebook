@@ -9,7 +9,7 @@ require 'faker'
 
 User.destroy_all
 
-User.create!(first_name: "Cem", surname: "KIRAY", email: "jamcry@hotmail.com", password: "foobar", birthday: Date.new, gender_id: 0)
+User.create!(first_name: "Cem", surname: "KIRAY", email: "jamcry@hotmail.com", password: "foobar", birthday: Date.new(1995,05,05), gender_id: 0)
 
 50.times {
   u = User.create!(first_name: Faker::Name.first_name,
